@@ -4,4 +4,4 @@ while 1:
    if(arduinoSerialData.inWaiting()>0):
       myData = arduinoSerialData.readline()
       print myData
-      arduinoSerialData.write('180')
+      arduinoSerialData.write('90')
