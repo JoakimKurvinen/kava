@@ -40,6 +40,9 @@ void loop() {
   
   // Make servo go to n degrees 
   Servo1.write(n);
+  delay(1000);
+  // Make servo go to 0 degrees 
+  Servo1.write(0);
   
   delay(2000);
   
