@@ -1,0 +1,5 @@
+1. get the servo working from python
+
+2. Getting mail when correct tmp reaches
+
+3. 
