@@ -6,6 +6,7 @@ int n;
 
 Servo Servo1;
 
+// Our pin attachments
 const int analog = A0;
 const int digital = 3;
 
