@@ -12,7 +12,6 @@ inputs email (kahvipärinä@mailinator.com)
 	encrypt email if it is to be saved (?)
 	error check if it contains '@'
 	
-
 Saves email for one use or several uses
 Returns boolean value of coffee cup-type
 Returns int value n to Arduino below
