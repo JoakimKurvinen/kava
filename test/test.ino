@@ -2,9 +2,18 @@
 #include <Servo.h>
 
 int servoPin = 9;
-int n;
 
 Servo Servo1;
+
+const int buzzerPin = 5;
+
+const int songLength = 18;
+
+char notes[] = "cdfda ag cdfdg gf ";
+
+int beats[] = {1,1,1,1,1,1,4,4,2,1,1,1,1,1,1,4,4,2};
+
+int tempo = 113;
 
 // Our pin attachments
 const int analog = A0;
@@ -15,13 +24,25 @@ void setup() {
   pinMode(digital, OUTPUT);
   digitalWrite(digital, LOW);
   Servo1.attach(servoPin);
-  n = 0;
+  pinMode(buzzerPin, OUTPUT);
 }
 
 void loop() {
   if(Serial.available()){
-    n = Serial.read() - '0';
+    if(Serial.read() == 's')
+    {
+      Servo1.write(90);
+      digitalWrite(digital, HIGH);
+      delay(2000);
+    }
   }
+  
+    else
+    {
+      Servo1.write(0);
+      digitalWrite(digital, LOW);
+    }
+
   int sensorVal = analogRead(analog);
 
   float voltage = (sensorVal / 1024.0) * 5.0; 
@@ -30,23 +51,8 @@ void loop() {
   int temperature = (voltage - .5) * 100;
  
   Serial.println(temperature);
-
-  if (temperature > 25) {
-    digitalWrite(digital, HIGH);
-  }
-
-  else {
-    digitalWrite(digital, LOW);
-  }
-  
-  // Make servo go to n degrees 
-  Servo1.write(n);
-  delay(1000);
-  // Make servo go to 0 degrees 
-  Servo1.write(0);
-  
+    int i, duration;
   delay(2000);
-  
-
-
 }
+
+

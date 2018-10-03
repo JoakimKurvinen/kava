@@ -1,5 +1,6 @@
 #sendmail part
-recipient = "kahviparina@mailinator.com" #email is inputed by the user
+file = open('values.txt', 'r') #reads values from file
+recipient = file.readline() #email is inputed by the user
 subject = "The temperature is reached o' Master"
 body = 'The temperature you set for your beverage has been reached'
 
