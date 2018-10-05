@@ -18,9 +18,9 @@ while 1: #always true
 		print sensortemp    #Print values read from the serial output 
 		
 
-		file = open('values.txt', 'r') #reads values from file
-		email = file.readline()
-		goaltemp = file.readline()
+		file = open('values.txt', 'r') #reads values from 'values' file
+		email = file.readline()   #read first line
+		goaltemp = file.readline() #read second line
 		goaltemp = int(goaltemp)
 		
 		peaktemp = goaltemp + 5
@@ -33,14 +33,13 @@ while 1: #always true
 			pass	
 	   
 		if checker == True and sensortemp <= goaltemp:
-			
-			#led
-			#buzzer
+
+			#buzzer and LED blink
 			arduinoSerialData.write('s')    #turn servo 90 degrees and turn on the led
 			#email
 			#ourmail.send_email()
 			if send == True:
-				fromaddr = "picoffeegroup@gmail.com"
+				fromaddr = "" #email here
 				msg = MIMEMultipart()
 				msg['From'] = fromaddr
 				msg['To'] = email
@@ -49,7 +48,7 @@ while 1: #always true
 				msg.attach(MIMEText(body, 'plain'))
 				server = smtplib.SMTP('smtp.gmail.com', 587)
 				server.starttls()
-				server.login(fromaddr, "micropower7")
+				server.login(fromaddr, "")    #password here 
 				text = msg.as_string(email)
 				server.sendmail(fromaddr, email, text)
 				server.quit()
