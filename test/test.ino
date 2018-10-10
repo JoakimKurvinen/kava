@@ -5,13 +5,13 @@ int servoPin = 9;
 
 Servo Servo1;
 
-const int buzzerPin = 5;
+const int buzzerPin = 5; //WIP
 
-const int songLength = 18;
+const int songLength = 18; //WIP
 
-char notes[] = "cdfda ag cdfdg gf ";
+char notes[] = "cdfda ag cdfdg gf "; //WIP
 
-int beats[] = {1,1,1,1,1,1,4,4,2,1,1,1,1,1,1,4,4,2};
+int beats[] = {1,1,1,1,1,1,4,4,2,1,1,1,1,1,1,4,4,2}; // WIP
 
 int tempo = 113;
 
@@ -20,7 +20,7 @@ const int analog = A0;
 const int digital = 3;
 
 void setup() {  
-  Serial.begin(9600);
+  Serial.begin(9600);  
   pinMode(digital, OUTPUT);
   digitalWrite(digital, LOW);
   Servo1.attach(servoPin);
@@ -29,18 +29,18 @@ void setup() {
 
 void loop() {
   if(Serial.available()){
-    if(Serial.read() == 's')
+    if(Serial.read() == 's') //checks for input from the python script
     {
-      Servo1.write(90);
-      digitalWrite(digital, HIGH);
+      Servo1.write(90); //turns servo to 90 degrees
+      digitalWrite(digital, HIGH); //turns the led on
       delay(2000);
     }
   }
   
     else
     {
-      Servo1.write(0);
-      digitalWrite(digital, LOW);
+      Servo1.write(0); //keeps the servo at 0 without python input
+      digitalWrite(digital, LOW); //keeps the led off
     }
 
   int sensorVal = analogRead(analog);
@@ -52,7 +52,7 @@ void loop() {
  
   Serial.println(temperature);
     int i, duration;
-  delay(2000);
+  delay(2000); //2 second delay to display next value
 }
 
 

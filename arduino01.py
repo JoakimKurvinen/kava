@@ -18,7 +18,7 @@ while 1: #always true
 		print sensortemp    #Print values read from the serial output 
 		
 
-		file = open('values.txt', 'r') #reads values from 'values' file
+		file = open('values.txt', 'r') #reads values from 'values.txt' file, this contains the recipient mail & temp
 		email = file.readline()   #read first line
 		goaltemp = file.readline() #read second line
 		goaltemp = int(goaltemp)
@@ -39,16 +39,16 @@ while 1: #always true
 			#email
 			#ourmail.send_email()
 			if send == True:
-				fromaddr = "" #email here
+				fromaddr = "xxxxxxx@gmail.com" #sender email here
 				msg = MIMEMultipart()
 				msg['From'] = fromaddr
 				msg['To'] = email
 				msg['Subject'] = "Your coffee is ready"
-				body = "Your coffee is ready at temperature %s C" % (goaltemp) 
+				body = "Your coffee is ready at temperature %s C." % (goaltemp) 
 				msg.attach(MIMEText(body, 'plain'))
 				server = smtplib.SMTP('smtp.gmail.com', 587)
 				server.starttls()
-				server.login(fromaddr, "")    #password here 
+				server.login(fromaddr, "xxxxxxxx")    #sender password here 
 				text = msg.as_string(email)
 				server.sendmail(fromaddr, email, text)
 				server.quit()
