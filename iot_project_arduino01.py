@@ -43,6 +43,8 @@ while 1:	 #always true
 		# Code for formatting data before sending it #
 	#	myquery = {'date' : datetime.datetime.now()} 	 # Return all temperatures for today (24) 
 	#	mydoc = posts.find(myquery)
+		
+		
 
 		# Code for publishing dbase locally to webserver #
 		# Code for sending data to Azure $
