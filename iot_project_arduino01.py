@@ -9,6 +9,7 @@ from json2html import *
 
 broker="IoT-Cloud-Hub.azure-devices.net"	#Where to send our formatted data
 
+## Database Information ##
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 temp_db = client["tempdatabase"]     #tempdatabase the name of our database
 posts = temp_db.posts 			#Collection(similar to table) name
@@ -21,8 +22,8 @@ raw_input("Press ENTER to continue")
 arduinoSerialData = serial.Serial('/dev/ttyUSB0',9600)
 while 1:	 #always true
 	if(arduinoSerialData.inWaiting()>0):
-	#	sensortemp = arduinoSerialData.readline()
-	#	sensortemp = int(sensortemp)
+		sensortemp = arduinoSerialData.readline()
+		sensortemp = int(sensortemp)
 		post_data = {
 			'date': datetime.datetime.now(),
 			'temperature': sensortemp
