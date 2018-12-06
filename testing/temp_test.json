@@ -1,0 +1,1 @@
+[{"_id":{"$oid":"5c08b77fb897494d0d562c7d"},"date":{"$date":"2018-12-06T00:45:35.683Z"},"temperature":29},{"_id":{"$oid":"5c08b77fb897494d0d562c7e"},"date":{"$date":"2018-12-06T00:45:35.683Z"},"temperature":24},{"_id":{"$oid":"5c08b77fb897494d0d562c7f"},"date":{"$date":"2018-12-06T00:45:35.683Z"},"temperature":26}]
