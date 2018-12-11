@@ -1,15 +1,18 @@
 from paho.mqtt import client as mqtt
 
 import ssl
+import time
 
 
-
-path_to_root_cert = "<local path to digicert.cer>"
+path_to_root_cert = "/home/pi/Azure/digicert.cer"
 
 device_id = "Group05"
 
-sas_token = "<generated SAS token>"
+#sas_token = "HostName=IoT-Cloud-Hub.azure-devices.net;DeviceId=Group05;SharedAccessKey=vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
 
+#sas_token = "SharedAccessKey=vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
+
+sas_token = "vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
 iot_hub_name = "IoT-Cloud-Hub"
 
 
@@ -45,14 +48,17 @@ client.tls_insecure_set(False)
 
 
 client.connect(iot_hub_name+".azure-devices.net", port=8883)
-
+time.sleep(4)
 #Open file that contains data to send#
-file = open("temp_test.json")
-imagestring = file.read()
-barray = bytearray(imagestring)
-print barray	#for testing
+#file = open("temp_test.json")
+#imagestring = file.read()
+#barray = bytearray(imagestring)
+#print barray	#for testing
 
-client.publish("Temperature", barray, qos=1, retain=False)	#Sends data
+#client.publish("Temperature", barray, qos=1, retain=False)	#Sends data
+client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
+
+time.sleep(4)
 client.loop_forever()
 
 
