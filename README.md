@@ -1,17 +1,20 @@
-School project to make an IoT device that can take temp. input and measure a liquid's temp (in this case coffee) and send a notification when said temp. is reached.
+School project for a simple temp. measuring system that sends updates to an IoT Hub
 
 Files:
 
-license		The license for the project code
+LICENSE
+The license for the project code
 
-REAME.md	This file
+REAME.md
+This file
 
-iot_project_arduino01.py	The main python file
+iot_project_arduino01.py	
+The main python file
 
-old/		Old core from previous project
+old/
+Old core from previous project
 
-test/		Contains arduino source code file
-
-testing/	Contains subdirectory for testing
+testing/
+Contains subdirectory for testing
 
 

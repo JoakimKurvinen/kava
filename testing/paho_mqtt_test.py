@@ -6,13 +6,11 @@ import time
 
 path_to_root_cert = "/home/pi/Azure/digicert.cer"
 
-device_id = "Group05"
+device_id = "Group04"
 
-#sas_token = "HostName=IoT-Cloud-Hub.azure-devices.net;DeviceId=Group05;SharedAccessKey=vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
 
-#sas_token = "SharedAccessKey=vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
 
-sas_token = "vCEWoa85IyTKl8tg9ntQ8MrVRXnR+W3YlsvlZVCZvFo="
+sas_token = "" 
 iot_hub_name = "IoT-Cloud-Hub"
 
 
