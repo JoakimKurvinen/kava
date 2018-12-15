@@ -14,7 +14,5 @@ The main python file
 old/
 Old core from previous project
 
-testing/
-Contains subdirectory for testing
 
 

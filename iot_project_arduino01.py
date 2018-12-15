@@ -15,23 +15,18 @@ print("The aim of this software is to record temperature in a room, format & sto
 
 raw_input("Press ENTER to continue")
  
-arduinoSerialData = serial.Serial('/dev/ttyUSB0',9600)
+arduinoSerialData = serial.Serial('/dev/ttyUSB0', 9600)
 while True:	 
 	if(arduinoSerialData.inWaiting()>0):
 		sensortemp = arduinoSerialData.readline()
-		sensortemp = int(sensortemp)
-		post_data = {
-			'date': datetime.datetime.now(),
-			'temperature': sensortemp
-
-		}
-		result = posts.insert_one(post_data)		  #Inserts data into dbase
-		print sensortemp    				#Print values read from the serial output 
+		post_data = {'date': datetime.datetime.now(), 'temperature': sensortemp}
+		posts.insert_one(post_data)		  #Inserts data into dbase
+		print(sensortemp)	
 		
-		f = open("temperature.txt", "a+")	# Open file for writing and append to it	
-		shell_input = subprocess.Popen("date", stdout=subprocess.PIPE)	# Using shell command 'date' to get current local time
-		shell_input = shell_input.stdout.read()
-		f.write("%s = " %shell_input)
-		f.write("%d degrees\n" %sensortemp)
+		with open("temperature.txt", "a") as f:	
+			shell_input = subprocess.Popen("date", stdout=subprocess.PIPE)	
+			shell_input = shell_input.stdout.read()
+			f.write("%s\n" %shell_input)
+			f.write("%s degrees\n" %sensortemp)
 
 		http_publish.local_publish_http()	

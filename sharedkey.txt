@@ -1,1 +1,0 @@
-HostName=IoT-Cloud-Hub.azure-devices.net;DeviceId=Group04;SharedAccessKey=wOsek8On/g+oy2a0houiZt225ozLM0DjYmjwqpNoF2Q=

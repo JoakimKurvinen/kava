@@ -18,7 +18,7 @@ def send_confirmation_callback(message, result, user_context):
     print("Confirmation received for message with result = %s" % (result))
 
 
-def message_from_file:
+def message_from_file():
 	with open('temperature.txt', 'r'):
 		string = f.readlines()
 		cutstring = string[-2]
