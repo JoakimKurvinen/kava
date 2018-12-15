@@ -1,9 +1,13 @@
 import serial 
-import subprocess    
+import subprocess    #for using linux commands
 import pymongo
 import datetime
-import http_publish
+#import paho.mqtt.client as paho
+import pprint
+import json
+from json2html import *
 
+#broker="IoT-Cloud-Hub.azure-devices.net"	#Where to send our formatted data
 
 ## Database Information ##
 client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -16,7 +20,7 @@ print("The aim of this software is to record temperature in a room, format & sto
 raw_input("Press ENTER to continue")
  
 arduinoSerialData = serial.Serial('/dev/ttyUSB0',9600)
-while True:	 
+while 1:	 #always true
 	if(arduinoSerialData.inWaiting()>0):
 		sensortemp = arduinoSerialData.readline()
 		sensortemp = int(sensortemp)
@@ -27,11 +31,39 @@ while True:
 		}
 		result = posts.insert_one(post_data)		  #Inserts data into dbase
 		print sensortemp    				#Print values read from the serial output 
+#		for post in posts.find():		# for testing if database is being written
+#			pprint.pprint(post)
 		
+		## Backup textfile if database stuff is hard/doesn't work ##
 		f = open("temperature.txt", "a+")	# Open file for writing and append to it	
 		shell_input = subprocess.Popen("date", stdout=subprocess.PIPE)	# Using shell command 'date' to get current local time
 		shell_input = shell_input.stdout.read()
 		f.write("%s = " %shell_input)
 		f.write("%d degrees\n" %sensortemp)
+		f.close()
 
-		http_publish.local_publish_http()	
+		## Code for formatting data before sending it ##
+	
+		subprocess.call(["mongoexport","--db", "tempdatabase", "-c", "posts", "--jsonArray", "--out", "temp.json"])  #exports our database into a file that is read in the next section
+
+
+		# Code for publishing dbase locally to webserver #
+		with open("temp.json", "r") as json_file:
+			infoFromJson = json.load(json_file)
+
+		html = json2html.convert(json = infoFromJson)
+		html_file = open("jsonhtml.html","w+")
+		html_file.write("""
+		<HTML>
+		<body>
+			<h1> Temperature </h1>""")
+		html_file.write(html)
+		html_file.write("""
+		</body>
+		</HTML>""")
+
+		html_file.close()
+		json_file.close()
+
+		
+		# Code for sending data to Azure # 
