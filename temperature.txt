@@ -1,0 +1,26 @@
+Thu 13 Dec 14:46:28 EET 2018
+ = 17 degrees
+Thu 13 Dec 14:51:22 EET 2018
+ = 18 degrees
+Thu 13 Dec 14:56:22 EET 2018
+ = 17 degrees
+Thu 13 Dec 15:01:22 EET 2018
+ = 17 degrees
+Thu 13 Dec 15:06:22 EET 2018
+ = 18 degrees
+Thu 13 Dec 15:11:22 EET 2018
+ = 18 degrees
+Thu 13 Dec 15:16:22 EET 2018
+ = 17 degrees
+Thu 13 Dec 15:41:21 EET 2018
+ = 17 degrees
+Thu 13 Dec 15:46:21 EET 2018
+ = 18 degrees
+Thu 13 Dec 15:51:21 EET 2018
+ = 18 degrees
+Thu 13 Dec 15:56:21 EET 2018
+ = 18 degrees
+Thu 13 Dec 16:01:21 EET 2018
+ = 18 degrees
+Thu 13 Dec 16:06:20 EET 2018
+ = 18 degrees

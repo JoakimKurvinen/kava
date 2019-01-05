@@ -1,0 +1,19 @@
+
+import pymongo
+import datetime
+import pprint
+
+broker="IoT-Cloud-Hub.azure-devices.net"	#Where to send our formatted data
+
+## Database Information ##
+client = pymongo.MongoClient("mongodb://localhost:27017/")
+temp_db = client["tempdatabase"]     #tempdatabase the name of our database
+posts = temp_db.posts 			#Collection(similar to table) name
+
+
+print("The aim of this software is to record temperature in a room, format & store it in a local database and finally publish it locally and remotely\n The code is released under GPLv3")
+
+raw_input("Press ENTER to continue")
+ 
+for post in posts.find():		# for testing if database is being written
+ pprint.pprint(post)
