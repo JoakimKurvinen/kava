@@ -2,16 +2,10 @@ School project for a simple temp. measuring system that sends updates to an IoT 
 
 Files:
 
-LICENSE
-The license for the project code
+* iot_project_arduino01.py	
 
-REAME.md
-This file
 
-iot_project_arduino01.py	
-The main python file
-
-old/
+* old/
 Old core from previous project
 
 

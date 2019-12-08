@@ -19,7 +19,7 @@ def send_confirmation_callback(message, result, user_context):
 
 
 def message_from_file():
-	with open('temperature.txt', 'r'):
+	with open('temperature.txt', 'r') as f:
 		string = f.readlines()
 		cutstring = string[-2]
 		cutstring += string[-1]
